@@ -390,5 +390,5 @@ FodyWeavers.xsd
 
 ### VisualStudio Patch ###
 # Additional files built by Visual Studio
-#AdsProject/AdsProject/appsettings.json
+AdsProject/AdsProject/appsettings.json
 AdsProject/AdsProject/wwwroot/Images/
