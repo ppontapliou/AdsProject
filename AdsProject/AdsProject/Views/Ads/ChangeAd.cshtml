@@ -1,0 +1,71 @@
+﻿@model UI.Models.Ad
+@using Models.Models
+
+@{
+    ViewData["Title"] = "Изменить Объявление";
+    List<Parameter> categories = (List<Parameter>)ViewData["Categories"];
+}
+<h2>Добавить</h2>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form enctype="multipart/form-data" asp-action="ChangeAd" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @if (!string.IsNullOrEmpty(ViewBag.Message))
+            {
+                <span class="text-danger">
+                    @ViewBag.Message
+                </span>
+            }
+            @Html.HiddenFor(x => x.Image)
+            @Html.HiddenFor(x => x.UserId)
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Title" class="contol-label">Title</label>
+                <textarea asp-for="Title" class="form-control" rows="3"></textarea>
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Address" class="control-label">Адресс</label>
+                <input asp-for="Address"  class="form-control" />
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+
+            <div class="input-group mb-3">
+                <input type="file" class="form-control" name="file" aria-describedby="inputGroupFileAddon03" aria-label="Upload">
+            </div>
+
+            <label asp-for="Category" class="control-label">Адресс</label>
+            <select class="form-select mb-3" asp-for="Category">
+                @foreach (Parameter category in categories)
+                {
+                    <option value="@category.Id">@category.Name</option>
+                }
+            </select>
+
+            <label asp-for="State" class="control-label">Адресс</label>
+            <select class="form-select mb-3" asp-for="State">
+                @foreach (States state in (States[])Enum.GetValues(typeof(States)))
+                {
+                    <option value="@((int)state)">@state</option>
+                }
+            </select>
+
+            <label asp-for="Type" class="control-label">Адресс</label>
+            <select class="form-select" asp-for="Type">
+                @foreach (Types type in (Types[])Enum.GetValues(typeof(Types)))
+                {
+                    <option value="@((int)type)">@type</option>
+                }
+            </select>
+
+            <div class="form-group">
+                <input type="submit" value="Изменить" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>    

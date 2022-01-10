@@ -1,0 +1,30 @@
+﻿@model Models.Models.Ad
+
+@using System.Security.Claims
+@using Models.Models 
+
+@{
+    ViewData["Title"] = "Просмотр";
+    List<Parameter> categories =(List<Parameter>)ViewData["Categories"];
+}
+<div class="text-center">
+    <img src="@Model.Image" class="rounded" alt="...">
+</div>
+
+<div class="media-body">
+    <h5 class="mt-0">@Model.Name</h5>
+    <p>@Model.Title</p>
+    <p>@Model.DateCreation</p>
+    <p>@Model.UserName</p>
+    <p>@Model.Address </p>
+    <p>@((Types)Model.Type)</p>
+    <p>@((States)Model.State)</p>
+    <p>@categories.FirstOrDefault(x=>x.Id==Model.Category).Name</p>
+    <p>@Model.Phone</p>
+    <p>@Model.Mail</p>
+</div>
+@if (User.IsInRole("Admin") || User.IsInRole("Moderator") || (User.Identity.IsAuthenticated && User.FindFirstValue(ClaimTypes.NameIdentifier) == Model.UserId.ToString()))
+{
+    <a href="/Ads/ChangeAd/@Model.Id" role="button" class="btn btn-primary">Изменить</a>
+    <a href="/Ads/DeleteAd/@Model.Id" role="button" class="btn btn-danger">Удалить</a>
+}

@@ -1,0 +1,17 @@
+﻿@using Models.Models
+@model List<Parameter>
+
+@{
+    ViewData["Title"] = "Категории";
+}
+<a href="/Category/AddCategory" type="button" class="btn btn-primary">Добавить категорию</a>
+<ul class="list-group">
+    @foreach (Parameter category in Model)
+    {
+        <li class="list-group-item">
+            @category.Name
+            <a href="/Category/ChangeCategory/@category.Id" type="button" class="btn btn-warning">Изменить</a>
+            <a href="/Category/DeleteCategory/@category.Id" type="button" class="btn btn-danger">Удалить</a>
+        </li>
+    }
+</ul>
