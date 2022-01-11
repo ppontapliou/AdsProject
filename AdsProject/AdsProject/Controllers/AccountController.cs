@@ -137,5 +137,42 @@ namespace UI.Controllers
                 return StatusCode(503);
             }
         }
+
+        [HttpGet]
+        public IActionResult Registrate()
+        {
+            Models.User user = new Models.User();
+            return View(user);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Registrate(Models.User user)
+        {
+            try
+            {
+                //ModelState["Role"].ValidationState = Microsoft.AspNetCore.Mvc.ModelBinding.ModelValidationState.Skipped;
+                if (!ModelState.IsValid)
+                {
+                    throw new ArgumentException();
+                }
+                else
+                {
+                    user.Role = (int)Roles.User;
+                    _userService.AddUser(_mapper.Map<User>(user));
+                }
+                return Redirect("/Account/Login");
+            }
+            catch (ArgumentException)
+            {
+                ViewBag.Message = "Ошибка";
+                return View(user);
+            }
+            catch (Exception)
+            {
+                return StatusCode(503);
+            }
+        }
+
     }
 }

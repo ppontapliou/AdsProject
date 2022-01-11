@@ -1,12 +1,12 @@
 ﻿@model UI.Models.User
 @{
-    ViewData["Title"] = "Изменить пользователя";
+    ViewData["Title"] = "Регистрация";
 }
-<h2>Изменить профиль</h2>
+<h2>Регистрация</h2>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="ChangeUser" method="post">
+        <form asp-action="Registrate" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             @if (!string.IsNullOrEmpty(ViewBag.Message))
             {
@@ -15,27 +15,32 @@
                 </span>
             }
             @Html.AntiForgeryToken()
-            @Html.HiddenFor(x => x.Id)
             <div class="form-group">
-                <label asp-for="UserName" class="control-label">Имя пользователя</label>
+                <label asp-for="UserName" class="control-label"></label>
                 <input asp-for="UserName" class="form-control" />
                 <span asp-validation-for="UserName" class="text-danger"></span>
             </div>
 
             <div class="form-group">
-                <label asp-for="Login" class="control-label">Логин</label>
+                <label asp-for="Login" class="control-label"></label>
                 <input asp-for="Login" class="form-control" />
                 <span asp-validation-for="Login" class="text-danger"></span>
             </div>
 
             <div class="form-group">
-                <label asp-for="Mail" class="control-label">Почта</label>
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Mail" class="control-label"></label>
                 <input asp-for="Mail" class="form-control" />
                 <span asp-validation-for="Mail" class="text-danger"></span>
             </div>
 
             <div class="form-group">
-                <label asp-for="Phone" class="control-label">Телефон</label>
+                <label asp-for="Phone" class="control-label"></label>
                 <input asp-for="Phone" class="form-control" />
                 <span asp-validation-for="Phone" class="text-danger"></span>
             </div>
