@@ -26,7 +26,6 @@ namespace UI.Controllers
             _mapper = mapper;
         }
 
-        // [Authorize(Roles = "Admin")]
         [HttpGet]
         public IActionResult GetUsers()
         {
@@ -39,7 +38,6 @@ namespace UI.Controllers
             return View();
         }
 
-        // [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult AddUser(Models.User user)

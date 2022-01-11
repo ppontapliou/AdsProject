@@ -19,25 +19,25 @@ namespace AdsProject
 {
     public class Startup
     {
-        private IConfiguration _IConfiguration { get; }
+        private IConfiguration _ñonfiguration { get; }
 
         public Startup(IConfiguration configuration)
         {
-            _IConfiguration = configuration;
+            _ñonfiguration = configuration;
         }
 
         public void ConfigureServices(IServiceCollection services)
         {
             Log.Logger = new LoggerConfiguration()
-                .ReadFrom.Configuration(_IConfiguration, "Serilog")
+                .ReadFrom.Configuration(_ñonfiguration, "Serilog")
                 .CreateLogger();
            
             services.AddAutoMapper(typeof(MappingProfile));
             services.AddCors();
 
-            services.Configure<AzureSettings>(_IConfiguration.GetSection("AzureSettings"));
-            services.Configure<DBConfig>(_IConfiguration.GetSection("DBConfig"));
-            services.Configure<HashConfig>(_IConfiguration.GetSection("HashConfig"));
+            services.Configure<AzureSettings>(_ñonfiguration.GetSection("AzureSettings"));
+            services.Configure<DBConfig>(_ñonfiguration.GetSection("DBConfig"));
+            services.Configure<HashConfig>(_ñonfiguration.GetSection("HashConfig"));
 
             services.AddSingleton(Log.Logger);
             services.AddSingleton<IHasher, Hasher>();
