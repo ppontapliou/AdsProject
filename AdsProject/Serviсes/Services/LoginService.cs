@@ -16,12 +16,10 @@ namespace Serviсes.Services
     public class LoginService : ILoginService
     {
         private readonly IUserRepository _userRepository;
-        private readonly ILogger _logger;
 
-        public LoginService(IUserRepository userRepository, ILogger logger)
+        public LoginService(IUserRepository userRepository)
         {
             _userRepository = userRepository;
-            _logger = logger;
         }
 
         public async Task Login(HttpContext HttpContext, User user)
@@ -52,7 +50,6 @@ namespace Serviсes.Services
             }
             catch(Exception exception)
             {
-                _logger.Error(exception.Message);
                 throw exception;
             }
         }

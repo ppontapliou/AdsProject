@@ -11,12 +11,10 @@ namespace Serviсes.Services
     public class UserService : IUserService
     {
         private readonly IUserRepository _userRepository;
-        private readonly ILogger _logger;
 
-        public UserService(IUserRepository userRepository, ILogger logger)
+        public UserService(IUserRepository userRepository)
         {
             _userRepository = userRepository;
-            _logger = logger;
         }
 
         public void AddUser(User user)

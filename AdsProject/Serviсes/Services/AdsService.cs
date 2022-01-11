@@ -12,10 +12,8 @@ namespace Serviсes.Services
     public class AdsService : IAdsService
     {
         private IUnitOfWork _repositories;
-        private ILogger _logger;
-        public AdsService(IUnitOfWork repositories, ILogger logger)
+        public AdsService(IUnitOfWork repositories)
         {
-            _logger = logger;
             _repositories = repositories;
         }
 

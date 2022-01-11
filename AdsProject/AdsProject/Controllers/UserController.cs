@@ -53,13 +53,15 @@ namespace UI.Controllers
                 _userService.AddUser(_mapper.Map<User>(user));
                 return Redirect("/User/GetUsers");
             }
-            catch (ArgumentException)
+            catch (ArgumentException exception)
             {
-                ViewBag.Message = "Invalid Values";
+                _logger.Error("Adduser – " + exception.Message);
+                ViewBag.Message = "Некорректные значения";
                 return View();
             }
-            catch (Exception)
+            catch (Exception exception)
             {
+                _logger.Warning("Adduser – " + exception.Message);
                 return StatusCode(503);
             }
         }
@@ -92,13 +94,15 @@ namespace UI.Controllers
                 return Redirect("/User/GetUsers");
 
             }
-            catch (ArgumentException)
+            catch (ArgumentException exception)
             {
-                ViewBag.Message = "Invalid Values";
+                _logger.Error("Changeuser – " + exception.Message);
+                ViewBag.Message = "Некорректные значения";
                 return View(user);
             }
-            catch (Exception)
+            catch (Exception exception)
             {
+                _logger.Warning("Changeuser – " + exception.Message);
                 return StatusCode(503);
             }
         }
@@ -124,12 +128,14 @@ namespace UI.Controllers
 
                 return Redirect("/User/GetUsers");
             }
-            catch (ArgumentException argumentException)
+            catch (ArgumentException exception)
             {
+                _logger.Error("deleteuser – " + exception.Message);
                 return NotFound();
             }
-            catch (Exception)
+            catch (Exception exception)
             {
+                _logger.Warning("deleteuser – " + exception.Message);
                 return StatusCode(503);
             }
         }

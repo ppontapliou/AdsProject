@@ -37,17 +37,19 @@ namespace UI.Controllers
                 if (ModelState.IsValid)
                 {
                     await _loginSercice.Login(HttpContext, _mapper.Map<User>(user));
-                    return LocalRedirect("~/Ads/GetAds");
+                    return LocalRedirect("/Ads/GetAds");
                 }
                 throw new ArgumentException();
             }
-            catch (ArgumentException)
+            catch (ArgumentException exception)
             {
+                _logger.Error("Login – " + exception.Message);
                 ViewBag.Message = "Неверные данные";
                 return View(user);
             }
-            catch (Exception)
+            catch (Exception exception)
             {
+                _logger.Warning("Login – " + exception.Message);
                 return StatusCode(503);
             }
         }
@@ -89,13 +91,15 @@ namespace UI.Controllers
 
                 return Redirect("/Ads/GetAds");
             }
-            catch (ArgumentException)
+            catch (ArgumentException exception)
             {
+                _logger.Error("changeaccount – " + exception.Message);
                 ViewBag.Message = "Ошибка";
                 return View(user);
             }
-            catch (Exception)
+            catch (Exception exception)
             {
+                _logger.Warning("changeaccount – " + exception.Message);
                 return StatusCode(503);
             }
         }
@@ -127,13 +131,15 @@ namespace UI.Controllers
                 }
                 return Redirect("/User/GetUsers");
             }
-            catch (ArgumentException)
+            catch (ArgumentException exception)
             {
+                _logger.Error("changepassword – " + exception.Message);
                 ViewBag.Message = "Ошибка";
                 return View(user);
             }
-            catch (Exception)
+            catch (Exception exception)
             {
+                _logger.Warning("changepassword – " + exception.Message);
                 return StatusCode(503);
             }
         }
@@ -151,7 +157,6 @@ namespace UI.Controllers
         {
             try
             {
-                //ModelState["Role"].ValidationState = Microsoft.AspNetCore.Mvc.ModelBinding.ModelValidationState.Skipped;
                 if (!ModelState.IsValid)
                 {
                     throw new ArgumentException();
@@ -163,13 +168,15 @@ namespace UI.Controllers
                 }
                 return Redirect("/Account/Login");
             }
-            catch (ArgumentException)
+            catch (ArgumentException exception)
             {
+                _logger.Error("Registrate – " + exception.Message);
                 ViewBag.Message = "Ошибка";
                 return View(user);
             }
-            catch (Exception)
+            catch (Exception exception)
             {
+                _logger.Warning("Registrate – " + exception.Message);
                 return StatusCode(503);
             }
         }

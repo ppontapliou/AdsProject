@@ -42,7 +42,6 @@ namespace UI.Controllers
             ViewData["Categories"] = ads.ListCategory;
 
             return View(ads.ListAd);
-
         }
 
         [HttpGet]
@@ -78,13 +77,15 @@ namespace UI.Controllers
 
                 return RedirectToAction(nameof(GetAds),(ad));
             }
-            catch (ArgumentException)
+            catch (ArgumentException exception)
             {
+                _logger.Error("addad – " + exception.Message);
                 ViewData["Categories"] = _categoryServices.GetCategories();
                 return View(ad);
             }
-            catch (Exception)
+            catch (Exception exception)
             {
+                _logger.Warning("addad – " + exception.Message);
                 return StatusCode(503);
             }
 
@@ -125,13 +126,15 @@ namespace UI.Controllers
 
                 return RedirectToAction(nameof(GetAds), (ad));
             }
-            catch (ArgumentException)
+            catch (ArgumentException exception)
             {
+                _logger.Error("changead – " + exception.Message);
                 ViewData["Categories"] = _categoryServices.GetCategories();
                 return View(ad);
             }
-            catch (Exception)
+            catch (Exception exception)
             {
+                _logger.Warning("changead – " + exception.Message);
                 return StatusCode(503);
             }
         }
@@ -160,12 +163,14 @@ namespace UI.Controllers
 
                 return RedirectToAction(nameof(GetAds));
             }
-            catch (ArgumentException)
+            catch (ArgumentException exception)
             {
+                _logger.Error("deletead – " + exception.Message);
                 return NotFound();
             }
-            catch (Exception)
+            catch (Exception exception)
             {
+                _logger.Warning("deletead – " + exception.Message);
                 return StatusCode(503);
             }
 

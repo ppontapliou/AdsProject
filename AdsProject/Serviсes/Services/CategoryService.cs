@@ -11,12 +11,10 @@ namespace Serviсes.Services
     public class CategoryService : ICategoryService
     {
         private readonly ICategoryRepository _categoryRepository;
-        private readonly ILogger _logger;
 
-        public CategoryService(ICategoryRepository categoryRepository, ILogger logger)
+        public CategoryService(ICategoryRepository categoryRepository)
         {
             _categoryRepository = categoryRepository;
-            _logger = logger;
         }
 
         public void AddCategory(Parameter category)

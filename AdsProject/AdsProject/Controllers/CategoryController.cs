@@ -51,13 +51,15 @@ namespace UI.Controllers
 
                 return Redirect("/Category/GetCategories");
             }
-            catch (ArgumentException)
+            catch (ArgumentException exception)
             {
-                ViewBag.Message = "Invalid Values";
+                _logger.Error("addcategory – " + exception.Message);
+                ViewBag.Message = "Некорректные значения";
                 return View();
             }
-            catch (Exception)
+            catch (Exception exception)
             {
+                _logger.Warning("addcategory – " + exception.Message);
                 return StatusCode(503);
             }
         }
@@ -86,13 +88,15 @@ namespace UI.Controllers
                 _categoryService.ChangeCategory(_mapper.Map<Parameter>(category));
                 return Redirect("/Category/GetCategories");
             }
-            catch (ArgumentException)
+            catch (ArgumentException exception)
             {
-                ViewBag.Message = "Invalid Values";
+                _logger.Error("changecategory – " + exception.Message);
+                ViewBag.Message = "Некорректные значения";
                 return View();
             }
-            catch (Exception)
+            catch (Exception exception)
             {
+                _logger.Warning("changecategory – " + exception.Message);
                 return StatusCode(503);
             }
         }
@@ -117,12 +121,14 @@ namespace UI.Controllers
                 _categoryService.DeleteCategory(category.Id);
                 return Redirect("/Category/GetCategories");
             }
-            catch (ArgumentException)
+            catch (ArgumentException exception)
             {
+                _logger.Error("deletecategory – " + exception.Message);
                 return NotFound();
             }
-            catch (Exception)
+            catch (Exception exception)
             {
+                _logger.Warning("deletecategory – " + exception.Message);
                 return StatusCode(503);
             }
         }
