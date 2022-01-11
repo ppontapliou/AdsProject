@@ -6,6 +6,7 @@ using Serilog;
 using System;
 using System.Security.Claims;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 
 namespace UI.Controllers
 {
@@ -23,6 +24,7 @@ namespace UI.Controllers
             _userService = userService;
             _mapper = mapper;
         }
+        [HttpGet]
         public IActionResult Login()
         {
             Models.LoginData objLoginModel = new Models.LoginData();
@@ -30,6 +32,7 @@ namespace UI.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(Models.LoginData user)
         {
             try
@@ -55,6 +58,7 @@ namespace UI.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> LogOut()
         {
             await _loginSercice.LogOut(HttpContext);
@@ -75,6 +79,7 @@ namespace UI.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public IActionResult ChangeAccount(Models.User user)
         {
             try
@@ -105,6 +110,7 @@ namespace UI.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public IActionResult ChangePassword()
         {
             int id = Convert.ToInt32(User.FindFirstValue(ClaimTypes.NameIdentifier));
@@ -116,6 +122,7 @@ namespace UI.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public IActionResult ChangePassword(Models.ChangePasswordModel user)
         {
             try

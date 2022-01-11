@@ -19,9 +19,10 @@ namespace Serviсes.Services
 
         public void AddAdAsync(Ad ad, int userId)
         {
-            ad.UserId = userId;
+            
             if (ad.IsValid())
             {
+                ad.UserId = userId;
                 _repositories.AdsRepository.AddAdAsync(ad);
             }
             else
@@ -32,12 +33,11 @@ namespace Serviсes.Services
 
         public void ChangeAdAsync(Ad ad, int userId)
         {
-
-            if (_repositories.AdsRepository.CheckAdAsync(ad.Id, userId).Result == 1)
+            if (ad.IsValid())                
             {
-                ad.UserId = userId;
-                if (ad.IsValid())
+                if (_repositories.AdsRepository.CheckAdAsync(ad.Id, userId).Result == 1)
                 {
+                    ad.UserId = userId;
                     _repositories.AdsRepository.ChangAdAsync(ad);
                 }
                 else
@@ -54,7 +54,6 @@ namespace Serviсes.Services
 
         public void DeleteAdAsync(int id, int UserId)
         {
-
             if (_repositories.AdsRepository.CheckAdAsync(id, UserId).Result == 1)
             {
                 _repositories.AdsRepository.DeleteAdAsync(id);

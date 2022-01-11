@@ -17,7 +17,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hash", "Hash\Hash.csproj", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Validator", "Validator\Validator.csproj", "{81B0FE4C-C926-4C34-BB06-D7536EEFC926}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NUnitTest", "NUnitTest\NUnitTest.csproj", "{33CF2D5D-04B1-4504-9753-636E45EF9E6F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NUnitServicesTest", "NUnitServicesTest\NUnitServicesTest.csproj", "{6F22A502-6DBE-44AE-B6C1-48A9E9E5B58E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,10 +53,10 @@ Global
 		{81B0FE4C-C926-4C34-BB06-D7536EEFC926}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{81B0FE4C-C926-4C34-BB06-D7536EEFC926}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{81B0FE4C-C926-4C34-BB06-D7536EEFC926}.Release|Any CPU.Build.0 = Release|Any CPU
-		{33CF2D5D-04B1-4504-9753-636E45EF9E6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{33CF2D5D-04B1-4504-9753-636E45EF9E6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{33CF2D5D-04B1-4504-9753-636E45EF9E6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{33CF2D5D-04B1-4504-9753-636E45EF9E6F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F22A502-6DBE-44AE-B6C1-48A9E9E5B58E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F22A502-6DBE-44AE-B6C1-48A9E9E5B58E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F22A502-6DBE-44AE-B6C1-48A9E9E5B58E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F22A502-6DBE-44AE-B6C1-48A9E9E5B58E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
