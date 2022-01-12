@@ -40,7 +40,7 @@ namespace NUnitServicesTest
         }
 
         [Test]
-        public void Test_AddAd_GoodValues()
+        public void AddAd_GoodValues()
         {
             List<Ad> ads = new List<Ad>();
             _mockAds.Setup(m => m.AddAdAsync(It.IsAny<Ad>())).Callback((Ad x) => { ads.Add(x); });
@@ -55,15 +55,17 @@ namespace NUnitServicesTest
         }
 
         [Test]
-        public void Test_AddAd_BadValue1()
+        public void AddAd_WhenNullable_ShouldThrowException()
         {
             Ad ad = null;
 
-            Assert.Throws<ArgumentException>(delegate { _adsService.AddAdAsync(ad, 1); });
+            Action action = () => _adsService.AddAdAsync(ad, 1);
+
+            Assert.Throws<ArgumentException>(delegate { action(); });
         }
 
         [Test]
-        public void Test_AddAd_BadValue2()
+        public void AddAd_WhenNullableProperties_ShouldThrowException()
         {
             Ad ad = new Ad();
 
@@ -73,7 +75,7 @@ namespace NUnitServicesTest
         }
 
         [Test]
-        public void Test_AddAd_BadValue3()
+        public void AddAd_WhenInvalidProperties_ShouldThrowException()
         {
             Ad ad = new Ad() { Name = "Name", Title = "Title  1", Address = "Address 1", Image = "Image 1", Category = 1, Type = 1, State = 1 };
 
@@ -83,7 +85,7 @@ namespace NUnitServicesTest
         }
 
         [Test]
-        public void Test_ChangeAd_GoodValues()
+        public void ChangeAd_GoodValues()
         {
             List<Ad> ads = new List<Ad>();
             _mockAds.Setup(m => m.ChangAdAsync(It.IsAny<Ad>())).Callback((Ad x) => { ads.Add(x); });
@@ -99,7 +101,7 @@ namespace NUnitServicesTest
         }
 
         [Test]
-        public void Test_ChangeAd_BadValue1()
+        public void ChangeAd_WhenNullable_ShouldThrowException()
         {
             Ad ad = null;
 
@@ -109,7 +111,7 @@ namespace NUnitServicesTest
         }
 
         [Test]
-        public void Test_ChangeAd_BadValue2()
+        public void ChangeAd_WhenNullableProperties_ShouldThrowException()
         {
             Ad ad = new Ad();
 
@@ -119,7 +121,7 @@ namespace NUnitServicesTest
         }
 
         [Test]
-        public void Test_ChangeAd_BadValue3()
+        public void ChangeAd_WhenInvalidProperty_ShouldThrowException()
         {
             Ad ad = new Ad() { Name = "Name", Title = "Title  1", Address = "Address 1", Image = "Image 1", Category = 1, Type = 1, State = 1 };
 
@@ -144,7 +146,7 @@ namespace NUnitServicesTest
         }
 
         [Test]
-        public void Test_DeleteAd_BadValue1()
+        public void DeleteAd__WhenInvalidProperty_ShouldThrowException()
         {
             int id = 0;
             int user = 0;
