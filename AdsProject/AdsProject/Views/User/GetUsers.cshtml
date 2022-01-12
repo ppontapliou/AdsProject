@@ -1,0 +1,17 @@
+﻿@using Models.Models
+@model List<User>
+
+@{
+    ViewData["Title"] = "Категории";
+}
+<a href="/User/AddUser" type="button" class="btn btn-primary">Добавить пользователя</a>
+<ul class="list-group">
+    @foreach (User user in Model)
+    {
+        <li class="list-group-item">
+            @user.UserName
+            <a href="/User/ChangeUser/@user.Id" type="button" class="btn btn-warning">Изменить</a>
+            <a href="/User/DeleteUser/@user.Id" type="button" class="btn btn-danger">Удалить</a>
+        </li>
+    }
+</ul>

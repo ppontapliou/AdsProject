@@ -1,0 +1,66 @@
+﻿@model List<Ad>
+@using Models.Models
+@{
+    ViewData["Title"] = "Объявления";
+    List<Parameter> categories = (List<Parameter>)ViewData["Categories"];
+
+}
+<h2>Объявления</h2>
+<hr />
+@if (!string.IsNullOrEmpty(ViewBag.Message))
+{
+    <span class="text-danger">
+        @ViewBag.Message
+    </span>
+}
+<div class="row">
+    <form asp-action="GetAds" method="get" class="form-inline">
+        <input name="Name" value="" />
+        <select class="form-select d-inline-block mb-3 w-25" name="Category">
+            <option value="0" selected>Пусто</option>
+            @foreach (Parameter category in categories)
+            {
+                <option value="@category.Id">@category.Name</option>
+            }
+        </select>
+
+        <select class="form-select d-inline-block mb-3 w-25" name="State">
+            <option value="0" selected>Пусто</option>
+            @foreach (States state in (States[])Enum.GetValues(typeof(States)))
+            {
+                <option value="@((int)state)">@state</option>
+            }
+        </select>
+
+        <select class="form-select w-25 d-inline-block" name="Type">
+            <option value="0" selected>Пусто</option>
+            @foreach (Types type in (Types[])Enum.GetValues(typeof(Types)))
+            {
+                <option value="@((int)type)">@type</option>
+            }
+        </select>
+        <input type="submit" value="Поиск" class="btn btn-primary" />
+    </form>
+    <a href="/Ads/AddAd" class="btn btn-primary">Добавить объявление</a>
+    <div class="col-md-4">
+        @if (Model != null) foreach (Ad ad in Model)
+           {
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="@ad.Image" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">@ad.Name</h5>
+                        <p class="card-text">@ad.Title</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">@((States)ad.State)</li>
+                        <li class="list-group-item">@((Types)ad.Type)</li>
+                        <li class="list-group-item">@categories.FirstOrDefault(x => x.Id == ad.Category).Name</li>
+                    </ul>
+                    <div class="card-body">
+                        <a href="/Ads/GetAd/@ad.Id" class="card-link">Глянем</a>
+                    </div>
+                </div>
+            }
+    </div>
+
+</div>    
