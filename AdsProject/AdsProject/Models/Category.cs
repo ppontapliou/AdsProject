@@ -13,7 +13,7 @@ namespace UI.Models
 
         [DisplayName("Название")]
         [Required(ErrorMessage = "Категория должна быть введена")]
-        [Range(2, 100, ErrorMessage = "Категория должна содержать от 2 до 100 символов")]
+        [StringLength(maximumLength: 100, MinimumLength = 2, ErrorMessage = "Категория должна содержать от 2 до 100 символов")]
         public string Name { get; set; }
     }
 }

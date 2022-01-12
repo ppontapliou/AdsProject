@@ -7,8 +7,8 @@ namespace Models.Models
 {
     public enum States
     {
-        New = 1,
-        Used = 2,
-        None = 3,
+        Новое = 1,
+        Использованное = 2,
+        Отсутствует = 3,
     }
 }

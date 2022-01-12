@@ -7,7 +7,7 @@ namespace Models.Models
 {
     public enum Types
     {
-        Service = 1,
-        Product = 2
+        Услуга = 1,
+        Товар = 2
     }
 }

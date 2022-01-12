@@ -2,10 +2,10 @@
 @using Models.Models
 
 @{
-    ViewData["Title"] = "Изменить Объявление";
+    ViewData["Title"] = "Удалить Объявление";
     List<Parameter> categories = (List<Parameter>)ViewData["Categories"];
 }
-<h2>Добавить</h2>
+<h2>Удалить</h2>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -14,17 +14,17 @@
             @Html.AntiForgeryToken()
             @Html.HiddenFor(x => x.Image)
             <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
+                <label asp-for="Name" class="control-label">Название</label>
                 <input asp-for="Name" class="form-control" readonly />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Title" class="contol-label"></label>
+                <label asp-for="Title" class="contol-label">Описание</label>
                 <textarea asp-for="Title" class="form-control" rows="3" readonly></textarea>
                 <span asp-validation-for="Title" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Address" class="control-label"></label>
+                <label asp-for="Address" class="control-label">Адресс</label>
                 <input asp-for="Address" class="form-control" readonly />
                 <span asp-validation-for="Address" class="text-danger"></span>
             </div>

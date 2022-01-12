@@ -24,13 +24,12 @@ namespace Validator
         public static bool IsValid(this Parameter parameter)
         {
             return !(parameter is null || string.IsNullOrEmpty(parameter.Name) ||
-                   parameter.Name.Length < ValidConst.CategoryNameMinLenght || parameter.Name.Length > ValidConst.CategoryNameMaxLenght ||
-                   parameter.Id < 1);
+                   parameter.Name.Length < ValidConst.CategoryNameMinLenght || parameter.Name.Length > ValidConst.CategoryNameMaxLenght);
         }
 
         public static bool IsValid(this User user)
         {
-            return !(!user.IsValidPassword() ||  user.Mail is null && user.Phone is null &&
+            return !(user is null ||  user.Mail is null && user.Phone is null ||
                 string.IsNullOrEmpty(user.UserName) || user.UserName.Length < ValidConst.UserNameMinLenght || user.UserName.Length > ValidConst.UserNameMaxLenght ||
                 string.IsNullOrEmpty(user.Mail) || user.Mail.Length < ValidConst.MailMinLenght || user.Mail.Length > ValidConst.MailMaxLenght ||
                 string.IsNullOrEmpty(user.Phone) || user.Phone.Length < ValidConst.PhoneMinLenght || user.Phone.Length > ValidConst.PhoneMaxLenght ||

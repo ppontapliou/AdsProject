@@ -5,7 +5,7 @@
     ViewData["Title"] = "Изменить Объявление";
     List<Parameter> categories = (List<Parameter>)ViewData["Categories"];
 }
-<h2>Добавить</h2>
+<h2>Изменить</h2>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -25,12 +25,12 @@
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Title" class="contol-label">Title</label>
+                <label asp-for="Title" class="contol-label"></label>
                 <textarea asp-for="Title" class="form-control" rows="3"></textarea>
                 <span asp-validation-for="Title" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Address" class="control-label">Адресс</label>
+                <label asp-for="Address" class="control-label"></label>
                 <input asp-for="Address"  class="form-control" />
                 <span asp-validation-for="Address" class="text-danger"></span>
             </div>
@@ -39,7 +39,7 @@
                 <input type="file" class="form-control" name="file" aria-describedby="inputGroupFileAddon03" aria-label="Upload">
             </div>
 
-            <label asp-for="Category" class="control-label">Адресс</label>
+            <label asp-for="Category" class="control-label"></label>
             <select class="form-select mb-3" asp-for="Category">
                 @foreach (Parameter category in categories)
                 {
@@ -47,7 +47,7 @@
                 }
             </select>
 
-            <label asp-for="State" class="control-label">Адресс</label>
+            <label asp-for="State" class="control-label"></label>
             <select class="form-select mb-3" asp-for="State">
                 @foreach (States state in (States[])Enum.GetValues(typeof(States)))
                 {
@@ -55,7 +55,7 @@
                 }
             </select>
 
-            <label asp-for="Type" class="control-label">Адресс</label>
+            <label asp-for="Type" class="control-label"></label>
             <select class="form-select" asp-for="Type">
                 @foreach (Types type in (Types[])Enum.GetValues(typeof(Types)))
                 {

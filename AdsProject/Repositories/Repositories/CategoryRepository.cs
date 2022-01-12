@@ -21,7 +21,7 @@ namespace Repositories.Repositories
         {
             List<SqlParameter> sqlParameters = new List<SqlParameter>
             {
-                new SqlParameter("@UserId", category.Name),
+                new SqlParameter("@Category", category.Name),
             };
             SendRequest("EXEC AddCategory @Category", sqlParameters);
         }

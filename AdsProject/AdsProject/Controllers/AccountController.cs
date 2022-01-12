@@ -84,7 +84,7 @@ namespace UI.Controllers
         {
             try
             {
-                ModelState["Role"].ValidationState = Microsoft.AspNetCore.Mvc.ModelBinding.ModelValidationState.Skipped;
+                ModelState["Password"].ValidationState = Microsoft.AspNetCore.Mvc.ModelBinding.ModelValidationState.Skipped;
                 if (!ModelState.IsValid)
                 {
                     throw new ArgumentException();
@@ -136,7 +136,7 @@ namespace UI.Controllers
                     user.Id = Convert.ToInt32(User.FindFirstValue(ClaimTypes.NameIdentifier));
                     _userService.ChangePassword(_mapper.Map<User>(user));
                 }
-                return Redirect("/User/GetUsers");
+                return Redirect("/Ads/GetAds");
             }
             catch (ArgumentException exception)
             {

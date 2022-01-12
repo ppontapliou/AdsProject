@@ -6,7 +6,7 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="ChangeUser" method="post">
+        <form asp-action="ChangeAccount" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             @if (!string.IsNullOrEmpty(ViewBag.Message))
             {
@@ -16,6 +16,7 @@
             }
             @Html.AntiForgeryToken()
             @Html.HiddenFor(x => x.Id)
+            @Html.HiddenFor(x => x.Role)
             <div class="form-group">
                 <label asp-for="UserName" class="control-label">Имя пользователя</label>
                 <input asp-for="UserName" class="form-control" />
@@ -41,7 +42,7 @@
             </div>
 
             <div class="form-group">
-                <input type="submit" value="Добавить" class="btn btn-primary" />
+                <input type="submit" value="Изменить" class="btn btn-primary" />
             </div>
         </form>
     </div>

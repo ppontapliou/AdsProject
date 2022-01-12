@@ -19,7 +19,7 @@ namespace Serviсes.Services
 
         public void AddUser(User user)
         {
-            if (user.IsValid())
+            if (user.IsValid() && user.IsValidPassword())
             {
                 _userRepository.AddUser(user);
             }
