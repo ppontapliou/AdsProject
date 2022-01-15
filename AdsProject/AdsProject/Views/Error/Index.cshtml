@@ -1,0 +1,21 @@
+﻿@model int
+
+<div id="notfound">
+    <div class="notfound">
+        <div class="error">
+            <h1>@Model</h1>
+        </div>
+        @if (Model / 100 == 4)
+        {
+            <h2>А мы о таком и не знаем!</h2>
+        }
+        else if (Model / 100 == 5)
+        {
+            <h2>Вызывайте фиксиков</h2>
+        }
+        else
+        {
+            <h2>Ого!</h2>
+        }
+    </div>
+</div>

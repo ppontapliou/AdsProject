@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+
+    <link rel="stylesheet" href="~/css/Error.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+    <!--меню-->
+    <nav class="navbar navbar-inverse">
+        <div class="container">
+            <div>
+                <ul class="nav navbar-nav list-group-horizontal">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li><a href="~/Ads/GetAds" class="navbar-brand">Объявления</a></li>
+
+                        <li><a href="~/Account/ChangePassword" class="navbar-brand">Изменить пароль</a></li>
+                        <li><a href="~/Account/ChangeAccount/" class="navbar-brand">Изменить себя</a></li>
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <li><a href="~/User/GetUsers" class="navbar-brand">Пользователи</a></li>
+                            <li><a href="~/Category/GetCategories" class="navbar-brand">Категории</a></li>
+                        }
+                        <li><a href="~/Account/Logout" class="navbar-brand">Выйти</a></li>
+                    }
+                    else
+                    {
+                        <li><a href="~/Account/Registrate" class="navbar-brand">Регистрация</a></li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!--основной контент-->
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>© 2021 - Made by Pasha</p>
+        </footer>
+    </div>
+</body>
+</html>
